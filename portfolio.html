@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajesh S | Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    header {
+      background: #1d3557;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #a8dadc;
+    }
+
+    /* Toggle Button */
+    .toggle-button {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .toggle-button div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #1d3557;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .toggle-button {
+        display: flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: white;
+      padding: 2rem;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-text h1 .highlight {
+      color: #f1faee;
+    }
+    .hero-text h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      color: #a8dadc;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #f1faee;
+    }
+
+    /* Buttons */
+    .btn {
+      margin: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #e63946; /* Red background for resume & project */
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #d62839;
+      transform: scale(1.05);
+    }
+    .btn.secondary {
+      background: #2a2a2a; /* Dark button for contact */
+    }
+    .btn.secondary:hover {
+      background: #111;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1d3557;
+      position: relative;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #e63946;
+      margin: 0.5rem auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* Skills */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .skill-card {
+      background: #e9f5f2;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      font-weight: 600;
+      min-width: 120px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .skill-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    /* Contact */
+    .contact-info {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <h1>Rajesh S</h1>
+      <div class="toggle-button" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home -->
+  <section id="home" class="hero">
+    <div class="hero-card hero-text">
+      <h1>Hello, I'm <span class="highlight">Rajesh S</span></h1>
+      <h2>B.Com Graduate | Aspiring Full Stack Developer</h2>
+      <p>
+        Passionate about creating efficient, user-friendly applications with 
+        <strong>Java, Spring Boot, and modern web technologies</strong>. 
+        Always eager to learn and apply new skills to real-world challenges.
+      </p>
+      <div class="hero-buttons">
+        <a href="RAJESH-RESUME.pdf" target="_blank" class="btn">📄 View Resume</a>
+        <a href="#contact" class="btn secondary">📩 Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-card">
+      <h2>About Me</h2>
+      <p>
+        I am Rajesh S, a B.Com graduate with a keen interest in software development.
+        Skilled in Java, Spring Boot, HTML, CSS, JavaScript, and MySQL.  
+        I enjoy building projects that combine both creativity and technical expertise.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-card">
+      <h2>Projects</h2>
+      <p>This project is a simple e-commerce website where users can view Home page ,Collection page and contact page. It simulates an online shopping platform.</p>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="index.html" target="_blank" class="btn">📁 View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-card">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">Java</div>
+        <div class="skill-card">Spring Boot</div>
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">MySQL</div>
+        <div class="skill-card">Git & GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume">
+    <div class="section-card">
+      <h2>Resume</h2>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="RAJESH-RESUME.pdf" target="_blank" class="btn">📄 Open Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-card">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p>📧 Email: rajeshsathya0304@gmail.com</p>
+        <p>📱 Phone: 7305680907</p>
+        <p>📍 Location: Chennai, India</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    }
+  </script>
+
+
+</body>
+</html>
